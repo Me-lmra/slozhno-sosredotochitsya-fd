@@ -1,3 +1,5 @@
+/* здравствуйте! спасибо за проверку, рекомендации и ссылки. доброй ночи! */
+
 .page {
     background-image: var(--bg-image);
     background-size: cover;
@@ -18,31 +20,6 @@
 
     block-size: 100vh;
     min-block-size: 668px;
-}
-
-
-.header span:first-of-type {
-    position: absolute;
-    top: var(--size-padding);
-    right: var(--size-padding);
-
-    display: flex;
-
-    color: var(--main-color, #FF0070);
-    text-transform: uppercase;
-}
-
-.header span:first-of-type::after {
-    content: "";
-    display: block;
-    place-self: center;
-    margin-inline-start: var(--size-margin);
-    block-size: 5px;
-    inline-size: 5px;
-    border: 4.5px solid var(--main-color, #FF0070);
-    background-color: var(--main-color, #ff0070);
-    border-radius: 50%;
-    box-shadow: 0 0 4px 2px;
 }
 
 .decorated-zone::before {
@@ -68,6 +45,29 @@
     block-size: 25px;
 }
 
+.theme__rec {
+    position: absolute;
+    top: var(--size-padding);
+    right: var(--size-padding);
+
+    display: flex;
+
+    color: var(--main-color, #FF0070);
+    text-transform: uppercase;
+}
+
+.theme__rec::after {
+    content: "";
+    display: block;
+    place-self: center;
+    margin-inline-start: var(--size-margin);
+    block-size: 5px;
+    inline-size: 5px;
+    border: 4.5px solid var(--main-color, #FF0070);
+    background-color: var(--main-color, #ff0070);
+    border-radius: 50%;
+    box-shadow: 0 0 4px 2px;
+}
 
 /* меню с темами */
 
@@ -83,12 +83,6 @@
     gap: var(--size-gap);
 }
 
-.header__theme-menu-button_active {
-    position: relative;
-    outline: 1px solid var(--main-color, #FF0070);
-    pointer-events: none;
-}
-
 .header__theme-menu-button {
     background: none;
     border: none;
@@ -96,8 +90,9 @@
     color: var(--main-color, #FF0070);
     text-transform: lowercase;
     cursor: pointer;
-    padding: 1.5px 13px;
+    padding: 1px 13px;
     border-block-end: 1px solid transparent;
+    transition: outline .6s linear;
 }
 
 .header__theme-menu-button:hover {
@@ -110,6 +105,12 @@
 
 .header__theme-menu-button:focus-visible {
     border-block-end: 1px solid var(--main-color, #FF0070);
+}
+
+.header__theme-menu-button_active {
+    position: relative;
+    outline: 1px solid var(--main-color, #FF0070);
+    pointer-events: none;
 }
 
 .header__theme-menu-button.disabled {
@@ -139,6 +140,8 @@
 }
 
 
+
+
 .main {
     display: grid;
     gap: calc(var(--size-gap) * 5);
@@ -149,62 +152,64 @@
 
 /* настройка секций, блоков */
 
-.main__section, .main__section-block {
+.section, .section__block {
     display: grid;
     gap: calc(var(--size-gap) * 2);
 }
 
-.main__section-title {
+.section__title {
     font-size: var(--font-size);
     font-weight: var(--font-weight-bold, 700);
     color: var(--main-color, #FF0070);
 }
 
-.main__section-content {
+.card {
     display: grid;
     grid-template-rows: min-content auto;
     gap: var(--size-gap);
 }
 
-.content-help {
-    gap: calc(var(--size-gap) * 2);
+.card__title {
+    font-size: var(--font-size);
 }
 
-.content__paragraph {
+.card__paragraph {
+     color: var(--text-color, #FF0070);
+ }
+
+.content-help {
+    display: grid;
+    gap: calc(var(--size-gap) * 2);
+    margin-block-start: var(--size-margin);
+}
+
+.card__list-item {
     display: grid;
     gap: var(--size-gap);
 }
 
-.main__section-title-paragraph {
-    font-size: var(--font-size);
-}
-
-.main__section-paragraph {
-    color: var(--text-color, #FF0070);
+.fw-regular {
+    font-weight: var(--font-weight-regular);
 }
 
 /* ссылки */
 
-a {
+.card__paragraph a {
     text-decoration: none;
     text-shadow: 2px 1px 0 var(--accent-color);
+    transition: border-bottom 1s linear;
 }
 
-a:hover {
-    text-decoration: underline;
+.card__paragraph a:hover {
+    border-bottom: 1px solid var(--text-color, #FF0070);
 }
 
-a:focus {
+.card__paragraph a:focus {
     outline: none;
 }
 
-a:focus-visible {
+.card__paragraph a:focus-visible {
     outline: 1px solid var(--text-color, #FF0070);
-}
-
-a:visited {
-    outline: none;
-    color: var(--main-color, #FF0070);
 }
 
 /* галерея */
@@ -215,8 +220,10 @@ a:visited {
 }
 
 .section__image {
-    max-inline-size: 100%;
-    block-size: auto;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 
@@ -241,48 +248,46 @@ a:visited {
 
 @media (width >= 768px) {
     .page {
-        padding: calc(var(--size-padding) * 2);
-    }
-
-    .header {
-        padding-block-end: calc(var(--size-padding) * 4);
-    }
-
-    .header span:first-of-type, .decorated-zone::before {
-        top: 0;
+        padding-inline: calc(var(--size-padding) * 2);
     }
 
     .decorated-zone::after {
-        bottom: calc(var(--size-padding) * 4);
+        bottom: calc(var(--size-padding) * 2);
+    }
+
+    .theme__rec, .decorated-zone::before {
+        top: calc(var(--size-padding) * 2);
     }
 
     .header__title {
-        font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
         margin-inline-start: calc(-2 * var(--size-margin));
+    }
+
+    .decorated {
+        font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
     }
 
     .header__text {
         justify-self: end;
         inline-size: 50%;
-        margin-block-end: 0;
+        margin-block-end: calc(var(--size-margin) * 2);
     }
 
     .header__theme-menu {
-        padding-block-start: 0;
+        padding-block-start: 15px;
     }
 
+
+
     .main {
-        margin-block-end: calc(var(--size-margin) * 8);
+        margin-block: calc(var(--size-margin) * 6);
+
         gap: calc(var(--size-gap) * 8);
     }
 
-    .main__section {
+    .section {
         grid-template-columns: 1fr 2fr;
         grid-template-rows: auto;
-    }
-
-    .main__section-block.gallery {
-        margin-block-start: var(--size-margin);
     }
 
     .block-reasons {
@@ -293,9 +298,13 @@ a:visited {
         grid-template-columns: 1fr;
     }
 
+    .section__block.gallery {
+        margin-block-start: var(--size-margin);
+    }
+    
     .gallery {
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: clamp(12rem, -0.75rem + 26.5625vw, 16.25rem) clamp(14.375rem, -1.5625rem + 33.2031vw, 19.6875rem) clamp(19.875rem, -1.6875rem + 44.9219vw, 27.0625rem);
+        grid-template-rows: auto;
         gap: calc(var(--size-gap) * 2);
     }
 
@@ -336,28 +345,29 @@ a:visited {
         height: 100%;
         width: 100%;
     }
-
-    .footer__text {
-        font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
-    }
 }
 
 @media (width >= 1024px) {
-    .page {
-        padding: calc(var(--size-padding) * 2);
-    }
-
     .header__theme-menu {
         display: flex;
         justify-self: center;
         align-self: start;
+        padding-block-start: calc(var(--size-padding) * 2);
     }
 
     .header__theme-menu-list {
         flex-direction: row;
     }
 
+    .section-why {
+        grid-template-columns:  1fr 2.06fr;
+    }
+
     .block-reasons {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .section-help {
+        grid-template-columns:  1fr 2.06fr;
     }
 }

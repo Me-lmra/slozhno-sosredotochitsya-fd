@@ -23,11 +23,11 @@
         --rgb-color-theme-switch: rgba(50, 49, 45, 0.4);
     }
 
-    .header span:first-of-type {
+    .theme__rec {
         display: none;
     }
 }
 
-:root.theme-light .header span:first-of-type {
+:root.theme-light .theme__rec {
     display: none;
 }
