@@ -183,10 +183,10 @@
     margin-block-start: var(--size-margin);
 }
 
-.card__list-item {
+/*.card__list-item {
     display: grid;
     gap: var(--size-gap);
-}
+}*/
 
 .fw-regular {
     font-weight: var(--font-weight-regular);
@@ -301,7 +301,7 @@
     .section__block.gallery {
         margin-block-start: var(--size-margin);
     }
-    
+
     .gallery {
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: auto;
